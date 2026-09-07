@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivek Krishnan — Senior Data Analyst</title>
+<meta name="description" content="Portfolio of Vivek Krishnan, Senior Data Analyst — Tableau dashboards, KPI reporting, and customer success analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ECEEE7;
+    --paper-2:#F6F7F2;
+    --ink:#1B2430;
+    --muted:#5C6570;
+    --line:#CFCFC2;
+    --teal:#24685B;
+    --copper:#B87333;
+    --max:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2{
+    font-family:'IBM Plex Serif', Georgia, serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:var(--ink);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* ---- top nav ---- */
+  .topnav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 0;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-name{
+    font-family:'IBM Plex Serif', serif;
+    font-size:1.05rem;
+  }
+  .nav-links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:0.92rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  .nav-links a:hover{
+    color:var(--ink);
+    border-bottom-color:var(--copper);
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    padding:56px 0 44px;
+    animation:rise 0.6s ease-out;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 3.4rem);
+  }
+  .hero .role{
+    font-size:1.15rem;
+    margin:10px 0 2px;
+    color:var(--teal);
+  }
+  .hero .location{
+    color:var(--muted);
+    margin:0 0 34px;
+    font-size:0.95rem;
+  }
+
+  .kpi-strip{
+    display:flex;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:30px;
+  }
+  .kpi{
+    flex:1;
+    padding:18px 20px 18px 0;
+    border-left:1px solid var(--line);
+  }
+  .kpi:first-child{border-left:none; padding-left:0;}
+  .kpi .num{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1.8rem;
+    color:var(--ink);
+  }
+  .kpi .label{
+    display:block;
+    font-size:0.82rem;
+    color:var(--muted);
+    margin-top:4px;
+    line-height:1.4;
+  }
+
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    font-size:0.95rem;
+  }
+  .contact-row a, .contact-row span{
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+  }
+  .contact-row a:hover{color:var(--teal);}
+  .contact-row svg{flex-shrink:0;}
+
+  /* ---- sections ---- */
+  section{
+    padding:46px 0;
+    border-top:1px solid var(--line);
+  }
+  .section-title{
+    font-size:1.4rem;
+    margin-bottom:22px;
+  }
+  .lede{
+    color:var(--muted);
+    max-width:60ch;
+  }
+
+  /* ---- tags (core competencies) ---- */
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:20px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:5px 10px;
+    white-space:nowrap;
+  }
+
+  /* ---- timeline (experience) ---- */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap:34px;
+  }
+  .timeline-item{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:6px 24px;
+  }
+  .timeline-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--muted);
+    padding-top:3px;
+  }
+  .timeline-role{
+    font-weight:600;
+    font-size:1.05rem;
+  }
+  .timeline-company{
+    color:var(--teal);
+    font-size:0.95rem;
+    margin-bottom:10px;
+  }
+  .timeline-item ul{
+    margin:0;
+    padding-left:19px;
+    color:var(--ink);
+  }
+  .timeline-item li{
+    margin-bottom:6px;
+  }
+
+  /* ---- skills ---- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .skill-group h3{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--muted);
+    margin:0 0 10px;
+  }
+  .skill-group ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .skill-group li{
+    padding:7px 0;
+    border-top:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .skill-group li:first-child{border-top:none;}
+
+  /* ---- work ---- */
+  .work-item{
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .work-item:first-child{border-top:none; padding-top:0;}
+  .work-item h3{
+    font-family:'IBM Plex Serif', serif;
+    font-weight:500;
+    font-size:1.1rem;
+    margin:0 0 6px;
+  }
+  .work-item p{
+    margin:0;
+    color:var(--muted);
+  }
+
+  /* ---- education ---- */
+  .edu-item{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:6px 24px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  .edu-item:first-child{border-top:none;}
+  .edu-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--muted);
+    padding-top:3px;
+  }
+  .edu-title{font-weight:600;}
+  .edu-sub{color:var(--teal); font-size:0.92rem;}
+
+  /* ---- footer ---- */
+  footer{
+    padding:36px 0 50px;
+    color:var(--muted);
+    font-size:0.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width:640px){
+    .kpi-strip{flex-direction:column;}
+    .kpi{border-left:none; border-top:1px solid var(--line); padding:14px 0;}
+    .kpi:first-child{border-top:none;}
+    .timeline-item, .edu-item{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .nav-links{gap:14px 16px; font-size:0.86rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="topnav">
+      <span class="nav-name">Vivek Krishnan</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>Vivek Krishnan</h1>
+      <p class="role">Senior Data Analyst, Customer Success</p>
+      <p class="location">Kochi, Kerala, India</p>
+
+      <div class="kpi-strip">
+        <div class="kpi">
+          <span class="num mono">9+</span>
+          <span class="label">years in data analysis &amp; reporting</span>
+        </div>
+        <div class="kpi">
+          <span class="num mono">15+</span>
+          <span class="label">KPI dashboards built &amp; maintained</span>
+        </div>
+        <div class="kpi">
+          <span class="num mono">12 hrs</span>
+          <span class="label">of manual reporting cut weekly</span>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <a href="mailto:vivekvasantha1995@gmail.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6l9 7 9-7"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+          vivekvasantha1995@gmail.com
+        </a>
+        <a href="tel:+917356506469">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 73565 06469
+        </a>
+        <a href="https://linkedin.com/in/vivek-krishnan-254b4a179" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 17v-7"/></svg>
+          linkedin.com/in/vivek-krishnan
+        </a>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px; margin-right:6px;"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+          Kochi · open to Chennai, Bangalore, Hyderabad
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">About</h2>
+      <p class="lede">
+        Nine years turning customer, support, and operations data into dashboards executives actually
+        use. At Mitsogo, I build and maintain the Tableau dashboards behind SLA compliance,
+        time-to-resolution, and revenue reporting for the Customer Success org — work that's cut 12
+        hours of manual reporting a week and now runs across 15+ live dashboards. Before that:
+        enterprise reporting for global energy clients at Petrolink, and data validation across 50+
+        Fortune 500 immigration cases at Fragomen. Comfortable owning a report end to end, from the
+        first Salesforce pull to the version leadership opens every Monday.
+      </p>
+      <div class="tags">
+        <span class="tag">Data Analysis &amp; Visualization</span>
+        <span class="tag">Business Analysis &amp; BRD</span>
+        <span class="tag">Tableau Dashboard Development</span>
+        <span class="tag">KPI &amp; MRR Reporting</span>
+        <span class="tag">SLA Performance Tracking</span>
+        <span class="tag">Process Optimization</span>
+        <span class="tag">Stakeholder Management</span>
+        <span class="tag">Customer Success Analytics</span>
+        <span class="tag">Business Intelligence</span>
+        <span class="tag">Cross-Functional Collaboration</span>
+        <span class="tag">Project Management</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Jun 2021 —<br>Present</div>
+          <div>
+            <div class="timeline-role">Senior Data Analyst, Customer Success</div>
+            <div class="timeline-company">Mitsogo Technologies Pvt. Ltd. · Kochi</div>
+            <ul>
+              <li>Build executive Tableau and Excel dashboards tracking SLA compliance, time-to-resolution, and revenue KPIs.</li>
+              <li>Maintain 15+ KPI dashboards across the customer lifecycle — cut manual reporting by 12 hours a week and enabled real-time decisions.</li>
+              <li>Partner with product, support, and business teams to spot process bottlenecks and ship data-backed fixes.</li>
+              <li>Build and maintain MRR and performance-metric dashboards for real-time operational monitoring.</li>
+              <li>Mentor 5+ analysts on reporting practices, lifting team data accuracy by 25%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">May 2019 —<br>May 2021</div>
+          <div>
+            <div class="timeline-role">Data Analyst / Client Support Coordinator / Request Support Engineer</div>
+            <div class="timeline-company">Petrolink Data Services Pvt. Ltd. · Upstream oil &amp; gas data · Kochi</div>
+            <ul>
+              <li>Delivered enterprise data analytics and reporting for upstream oil &amp; gas operations, supporting global energy sector clients.</li>
+              <li>Partnered directly with international clients to scope workflows, data requirements, and performance goals.</li>
+              <li>Built standardized process documentation and onboarding frameworks that scaled service delivery.</li>
+              <li>Worked across technical and analytics teams to improve data accuracy and reporting quality.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Mar 2017 —<br>Apr 2019</div>
+          <div>
+            <div class="timeline-role">Immigration Associate Consultant</div>
+            <div class="timeline-company">Fragomen Immigration Services Pvt. Ltd. · Kochi</div>
+            <ul>
+              <li>Managed data collection, validation, and analysis across 50+ Fortune 500 client projects.</li>
+              <li>Generated process recommendations while keeping regulatory compliance and financial accuracy intact.</li>
+              <li>Briefed stakeholders on schedule and presented pricing analytics and insights to leadership.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Analytics &amp; Reporting</h3>
+          <ul>
+            <li>Tableau</li>
+            <li>Advanced Excel — PivotTables, XLOOKUP</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Business Tools</h3>
+          <ul>
+            <li>Salesforce</li>
+            <li>Jira</li>
+            <li>Confluence</li>
+            <li>HubSpot</li>
+            <li>Microsoft Office Suite</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Documentation &amp; Analysis</h3>
+          <ul>
+            <li>BRD (Business Requirements Docs)</li>
+            <li>KPI Dashboards</li>
+            <li>MRR Analysis</li>
+            <li>Process Optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2 class="section-title">Selected work</h2>
+      <p class="lede" style="margin-bottom:20px;">A closer look at three of the reporting systems behind that day-to-day work.</p>
+
+      <div class="work-item">
+        <h3>Customer lifecycle KPI dashboard suite</h3>
+        <p>15+ Tableau dashboards tracking SLA compliance, time-to-resolution, and revenue KPIs — cut manual reporting by 12 hours a week and moved the team to real-time decision-making.</p>
+      </div>
+      <div class="work-item">
+        <h3>MRR &amp; performance monitoring</h3>
+        <p>Real-time dashboards surfacing operational pain points across the customer journey, feeding directly into process improvements with product and support teams.</p>
+      </div>
+      <div class="work-item">
+        <h3>Onboarding &amp; documentation framework</h3>
+        <p>Standardized process documentation and onboarding frameworks built for Petrolink's global energy clients, designed to scale service delivery efficiently.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2 class="section-title">Education &amp; certifications</h2>
+
+      <div class="edu-item">
+        <div class="edu-date mono">2012 — 2016</div>
+        <div>
+          <div class="edu-title">B.Tech, Electrical &amp; Electronics Engineering</div>
+          <div class="edu-sub">Mahatma Gandhi University, Kerala</div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-date mono">Mar 2026</div>
+        <div>
+          <div class="edu-title">Project Management Basics</div>
+          <div class="edu-sub">Great Learning</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+    <span>Vivek Krishnan · Kochi, Kerala</span>
+    <span><a href="mailto:vivekvasantha1995@gmail.com" style="text-decoration:none;">vivekvasantha1995@gmail.com</a> · <a href="tel:+917356506469" style="text-decoration:none;">+91 73565 06469</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
